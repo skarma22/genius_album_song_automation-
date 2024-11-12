@@ -2,11 +2,15 @@
     "version": 2,
     "builds": [
       {
-        "src": "manage.py",
+        "src": "genius_album_song_automation/wsgi.py",
         "use": "@vercel/python",
-        "config": {
-          "maxLambdaSize": "15mb",
-          "runtime": "python3.9"
+        "config": { "maxLambdaSize": "15mb", "runtime": "python3.9" }
+      },
+      {
+        "src": " build_files.sh",
+        "use": "@vercel/static-build",
+        "config": { 
+            "distDir": "staticfiles_build"
         }
       }
     ],
@@ -16,18 +20,8 @@
         "dest": "/static/$1"
       },
       {
-        "src": "/media/(.*)",
-        "dest": "/media/$1"
-      },
-      {
         "src": "/(.*)",
-        "dest": "/manage.py"
+        "dest": "genius_album_song_automation/wsgi.py"
       }
-    ],
-    "env": {
-      "DJANGO_SETTINGS_MODULE": "your_project.settings",
-      "SECRET_KEY": "your_secret_key",
-      "DEBUG": "true"
-    }
+    ]
   }
-  
