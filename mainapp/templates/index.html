@@ -1,0 +1,30 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Album Scraper Tool</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <div class="form-container">
+        <h1>Album Scraper Tool</h1>
+        <form action="{% url 'scrape_album' %}" method="get">
+            <label for="url">Website URL</label>
+            <input type="text" id="url" name="url" placeholder="Enter website URL" required>
+
+            <label for="num_posts_from">From Post Number</label>
+            <input type="number" id="num_posts_from" name="num_posts_from" placeholder="From" required>
+
+            <label for="num_posts_to">To Post Number</label>
+            <input type="number" id="num_posts_to" name="num_posts_to" placeholder="To" required>
+
+            <label for="file_name">Excel File Name</label>
+            <input type="text" id="file_name" name="file_name" placeholder="Enter file name" required>
+
+            <button type="submit">Start Scraping</button>
+        </form>
+    </div>
+</body>
+</html>
